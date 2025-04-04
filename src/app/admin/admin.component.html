@@ -1,0 +1,38 @@
+<div class="p-6">
+  <mat-card class="max-w-2xl mx-auto">
+    <mat-card-title>Agendar Cita</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" class="space-y-4">
+        <mat-form-field class="w-full">
+          <mat-label>Paciente</mat-label>
+          <mat-select [(ngModel)]="patient_id" name="patient_id" required>
+            <mat-option *ngFor="let patient of patients" [value]="patient.id">
+              {{ patient.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Doctor</mat-label>
+          <mat-select [(ngModel)]="doctor_id" name="doctor_id" required>
+            <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">
+              {{ doctor.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Fecha</mat-label>
+          <input matInput [(ngModel)]="date" name="date" type="datetime-local" required>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Especialidad</mat-label>
+          <input matInput [(ngModel)]="specialty" name="specialty" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="w-full">Agendar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

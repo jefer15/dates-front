@@ -1,0 +1,35 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <mat-card class="w-96 p-6">
+    <mat-card-title>{{ isLogin ? 'Iniciar Sesión' : 'Registrarse' }}</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" class="space-y-4">
+        <mat-form-field class="w-full">
+          <mat-label>Correo</mat-label>
+          <input matInput [(ngModel)]="email" name="email" type="email" required>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+          <mat-label>password</mat-label>
+          <input matInput [(ngModel)]="password" name="password" type="password" required>
+        </mat-form-field>
+        <div *ngIf="!isLogin" class="space-y-4">
+          <mat-form-field class="w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="name" name="name" type="text" required>
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>Ciudad</mat-label>
+            <input matInput [(ngModel)]="city" name="city" type="text" required>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit" class="w-full">
+          {{ isLogin ? 'Iniciar Sesión' : 'Registrarse' }}
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+      <button mat-button (click)="toggleMode()">
+        {{ isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
